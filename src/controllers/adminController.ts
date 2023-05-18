@@ -1,7 +1,7 @@
 import { Response,Request } from "express";
 import { AdminRepository } from "../application/adminRepository";
 
-export class AdminController{
+export class CreateAdminController{
     private  adminRepository: AdminRepository;
 
     constructor(adminRepository:AdminRepository){
