@@ -4,7 +4,7 @@ export class GetClerskUseCase {
   constructor(private clerkRepository: ClerkRepository) {}
 
   async execute() {
-    const clerks = this.clerkRepository.get();
+    const clerks = await this.clerkRepository.get();
 
     return clerks;
   }
