@@ -7,7 +7,7 @@ export class CreateClerkController {
   async handle(req: Request, res: Response): Promise<Response> {
     const { name } = req.body;
 
-    const clerk = this.createClerkUseCase.execuse({ name });
+    const clerk = await this.createClerkUseCase.execute({ name });
 
     return res.status(201).json(clerk);
   }

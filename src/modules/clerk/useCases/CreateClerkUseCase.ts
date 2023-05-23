@@ -2,11 +2,11 @@ import { CreateClerkDTO } from "../ClerkDTOs/CreateClerkDTO";
 import { IClerkRepository } from "../repository/IClerkRepository";
 
 export class CreateClerkUseCase {
-  constructor(private clerkReporitory: IClerkRepository) {}
+  constructor(private clerkRepository: IClerkRepository) {}
 
-  async execuse({ name }: CreateClerkDTO) {
-    const createClerk = this.clerkReporitory.create({ name });
+  async execute({ name }: CreateClerkDTO) {
+    const clerk = await this.clerkRepository.create({ name });
 
-    return createClerk;
+    return clerk;
   }
 }

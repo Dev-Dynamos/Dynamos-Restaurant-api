@@ -8,6 +8,7 @@ export class ClerkRepository implements IClerkRepository {
   async create({ name }: CreateClerkDTO): Promise<Clerk> {
     const clerk = new Clerk(name);
 
+    this.clerks.push(clerk);
     return clerk;
   }
 }
