@@ -1,7 +1,14 @@
 import { Response, Request } from "express";
+import { CreateClerkUseCase } from "../useCases/CreateClerkUseCase";
 
 export class CreateClerkController {
+  constructor(private createClerkUseCase: CreateClerkUseCase) {}
+
   async handle(req: Request, res: Response): Promise<Response> {
-    return res.status(201).json();
+    const { name } = req.body;
+
+    const clerk = this.createClerkUseCase.execuse({ name });
+
+    return res.status(201).json(clerk);
   }
 }
