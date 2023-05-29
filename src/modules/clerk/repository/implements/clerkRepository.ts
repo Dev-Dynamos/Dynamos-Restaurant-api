@@ -24,7 +24,7 @@ export class ClerkRepository implements IClerkRepository {
   }
 
   async get(): Promise<Clerk[]> {
-    console.log(this.clerks);
-    return this.clerks;
+    const clerk = await prismaClient.funcionario.findMany();
+    return clerk;
   }
 }
