@@ -4,8 +4,6 @@ import { Clerk } from "../../model/Clerk";
 import { IClerkRepository } from "../IClerkRepository";
 
 export class ClerkRepository implements IClerkRepository {
-  private clerks: Clerk[] = [{ id: "d8fregui", name: "freufioreifi" }];
-
   async create({
     name,
     email,
