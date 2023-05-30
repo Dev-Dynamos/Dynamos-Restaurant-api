@@ -47,3 +47,37 @@ model restaurante{
 
   @@map("reastaurantes")
 }
+
+model refeicao{
+  id String @id @default(uuid())
+  nome String
+  descricao String
+  preco Float
+  fotoId String
+
+  @@map("refeicoes")
+}
+
+model producto{
+  id String @id @default(uuid())
+  nome String
+  descricao String
+  preco Float
+
+  @@map("productos")
+}
+
+model menu{
+  id String @id @default(uuid())
+  nome String
+
+  @@map("menus")
+}
+
+model pedido{
+  id String @id @default(uuid())
+  status String
+  description String
+
+  @@map("pedidos")
+}
