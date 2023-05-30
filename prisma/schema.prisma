@@ -16,53 +16,44 @@ model admin{
   @@map("admins")
 }
 
-model funcionario{
+model operador{
   id String @id @default(uuid())
   name String 
   email String
   telefone String 
-  cargiId String 
+  morada String
+  cargoId String 
 
-  @@map("funcionarios")
+  @@map("operadores")
 }
 model cargo{
   id String @id @default(uuid())
-  designacao String
+  nome String
 
-  @@map("cargoss")
+  @@map("cargos")
 }
 
-model departamento{
+model stock{
   id String @id @default(uuid())
-  designacao String
+  idProducto String
+  quantidade Float
 
-  @@map("departamentos")
+  @@map("stocks")
 }
 
-model restaurante{
+model categoria{
   id String @id @default(uuid())
   nome String
-  endereco String
-  telefone String
 
-  @@map("reastaurantes")
+  @@map("categorias")
 }
-
-model refeicao{
-  id String @id @default(uuid())
-  nome String
-  descricao String
-  preco Float
-  fotoId String
-
-  @@map("refeicoes")
-}
-
+ 
 model producto{
   id String @id @default(uuid())
   nome String
   descricao String
   preco Float
+  idCategoria String
 
   @@map("productos")
 }
@@ -70,6 +61,7 @@ model producto{
 model menu{
   id String @id @default(uuid())
   nome String
+  idProducto String
 
   @@map("menus")
 }
@@ -78,6 +70,10 @@ model pedido{
   id String @id @default(uuid())
   status String
   description String
+  localizacao String
+  email String
+  idProducto String
+  idMenu String
 
   @@map("pedidos")
 }
