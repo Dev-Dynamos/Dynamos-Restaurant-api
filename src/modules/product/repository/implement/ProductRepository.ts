@@ -3,12 +3,12 @@ import { CreateProductDTO } from "../../ProductDTOs/CreateProductDTO";
 import { IProductRepository } from "../IProductRepository";
 
 export class ProductRepository implements IProductRepository {
-  async create({ nome, descricao, preco }: CreateProductDTO) {
+  async create({ nome, idCategoria, preco }: CreateProductDTO) {
     const product = prismaClient.producto.create({
       data: {
         nome,
-        descricao,
         preco,
+        idCategoria,
       },
     });
     return product;

@@ -51,7 +51,6 @@ model categoria{
 model producto{
   id String @id @default(uuid())
   nome String
-  descricao String
   preco Float
   idCategoria String
 
