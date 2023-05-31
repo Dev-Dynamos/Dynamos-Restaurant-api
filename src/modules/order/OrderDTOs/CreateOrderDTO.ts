@@ -1,6 +1,8 @@
 export interface CreateOrderDTO {
-  name: string;
-  email: string;
-  telefone: string;
-  cargiId: string;
+  descricao: string;
+  localizacao: string;
+  idCliente: string;
+  idProducto: string;
+  idMenu: string;
+  status: string;
 }

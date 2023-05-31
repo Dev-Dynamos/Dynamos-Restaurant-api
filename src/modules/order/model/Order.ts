@@ -7,19 +7,22 @@ export class Order {
   readonly idCliente: string;
   readonly idProducto: string;
   readonly idMenu: string;
+  readonly status: string;
 
   constructor(
-    description: string,
+    descricao: string,
     localizacao: string,
     idCliente: string,
     idProducto: string,
-    idMenu: string
+    idMenu: string,
+    status: string
   ) {
     this.id = crypto.randomUUID();
-    this.descricao = description;
+    this.descricao = descricao;
     this.localizacao = localizacao;
     this.idCliente = idCliente;
     this.idProducto = idProducto;
     this.idMenu = idMenu;
+    this.status = status;
   }
 }

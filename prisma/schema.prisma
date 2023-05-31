@@ -69,11 +69,19 @@ model menu{
 model pedido{
   id String @id @default(uuid())
   status String
-  description String
+  descricao String
   localizacao String
-  email String
+  idCliente String
   idProducto String
   idMenu String
 
   @@map("pedidos")
+}
+
+model cliente{
+  id String @id @default(uuid())
+  name String 
+  email String
+  telefone String 
+  password String 
 }

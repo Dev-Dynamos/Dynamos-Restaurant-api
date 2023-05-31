@@ -1,15 +1,22 @@
 import { CreateOrderDTO } from "../OrderDTOs/CreateOrderDTO";
-import { IClerkRepository } from "../repository/IClerkRepository";
+import { IOrderRepository } from "../repository/IOrderRepository";
 
 export class CreateOrderUseCase {
-  constructor(private orderRepository: IClerkRepository) {}
+  constructor(private orderRepository: IOrderRepository) {}
 
-  async execute({ name, email, telefone, cargiId }: CreateOrderDTO) {
+  async execute({
+    descricao,
+    localizacao,
+    idCliente,
+    idProducto,
+    idMenu,
+  }: CreateOrderDTO) {
     const order = await this.orderRepository.create({
-      name,
-      email,
-      telefone,
-      cargiId,
+      descricao,
+      localizacao,
+      idCliente,
+      idProducto,
+      idMenu,
     });
 
     return order;
