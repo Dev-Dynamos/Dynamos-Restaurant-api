@@ -1,6 +1,6 @@
 import { ProductRepository } from "../repository/implement/ProductRepository";
 import { CreateProductUseCase } from "../useCases/CreateProductUseCase";
-import { CreateProductController } from "./Product";
+import { CreateProductController } from "./CreateProductControllers";
 
 const productRepository = new ProductRepository();
 const createProductUseCase = new CreateProductUseCase(productRepository);
