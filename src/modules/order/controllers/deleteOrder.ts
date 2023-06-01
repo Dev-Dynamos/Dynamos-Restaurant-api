@@ -1,6 +1,6 @@
 import { OrderRepository } from "../repository/implements/OrderRepository";
 import { DeleteOrderUseCase } from "../useCases/DeleteOrderUseCase";
-import { DeleteOrderController } from "./DeleteMenuController";
+import { DeleteOrderController } from "./DeleteOrderController";
 
 const orderRepository = new OrderRepository();
 const deleteOrderUseCase = new DeleteOrderUseCase(orderRepository);
