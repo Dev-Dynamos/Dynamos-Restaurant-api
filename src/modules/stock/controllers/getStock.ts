@@ -1,6 +1,6 @@
 import { StockRepository } from "../repository/implement/StockRepository";
 import { GetStockUseCase } from "../useCases/GetStockUseCase";
-import { GetStockController } from "./GetAdminController";
+import { GetStockController } from "./GetStockController";
 
 const stockRepository = new StockRepository();
 const getStockUseCase = new GetStockUseCase(stockRepository);
