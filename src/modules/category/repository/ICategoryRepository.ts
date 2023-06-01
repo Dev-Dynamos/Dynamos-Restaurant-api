@@ -4,4 +4,5 @@ import { Category } from "../model/Category";
 export interface ICategoryRepository {
   create({ nome }: CreateCategoryDTO): Promise<Category>;
   get(): Promise<Category[]>;
+  delete: (id: string) => Promise<Category>;
 }

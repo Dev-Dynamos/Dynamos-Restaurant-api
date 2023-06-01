@@ -1,10 +1,10 @@
 import { CategoryRepository } from "../repository/implements/CategoryRepository";
 
-export class GetCategorykUseCase {
+export class DeleteCategoryUseCase {
   constructor(private categoryRepository: CategoryRepository) {}
 
-  async execute() {
-    const category = await this.categoryRepository.get();
+  async execute(id: string) {
+    const category = this.categoryRepository.delete(id);
 
     return category;
   }
