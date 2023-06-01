@@ -18,4 +18,13 @@ export class MenuRepository implements IMenuRepository {
     const menu = await prismaClient.menu.findMany();
     return menu;
   }
+
+  async delete(id: string): Promise<Menu> {
+    const menu = await prismaClient.menu.delete({
+      where: {
+        id,
+      },
+    });
+    return menu;
+  }
 }
