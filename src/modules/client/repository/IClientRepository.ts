@@ -9,4 +9,5 @@ export interface IClientRepository {
     telefone,
   }: CreateClientDTO) => Promise<Client>;
   get(): Promise<Client[]>;
+  delete: (id: string) => Promise<Client>;
 }
