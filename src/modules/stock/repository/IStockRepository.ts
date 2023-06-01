@@ -4,4 +4,5 @@ import { Stock } from "../model/Stock";
 export interface IStockRepository {
   create: ({ idProducto, quantidade }: CreateStockDTO) => Promise<Stock>;
   get: () => Promise<Stock[]>;
+  delete: (id: string) => Promise<Stock>;
 }

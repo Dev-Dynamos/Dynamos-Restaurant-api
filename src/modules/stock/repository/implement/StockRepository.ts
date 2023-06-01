@@ -18,4 +18,13 @@ export class StockRepository implements IStockRepository {
     const stock = await prismaClient.stock.findMany();
     return stock;
   }
+
+  async delete(id: string): Promise<Stock> {
+    const stock = await prismaClient.stock.delete({
+      where: {
+        id,
+      },
+    });
+    return stock;
+  }
 }
