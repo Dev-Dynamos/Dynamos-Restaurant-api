@@ -20,4 +20,13 @@ export class AdminRepository implements IAdminRepository {
     const admin = await prismaClient.admin.findMany();
     return admin;
   }
+
+  async delete(id: string): Promise<Admin> {
+    const admin = await prismaClient.admin.delete({
+      where: {
+        id,
+      },
+    });
+    return admin;
+  }
 }
