@@ -10,6 +10,7 @@ export class CreateOrderUseCase {
     idCliente,
     idProducto,
     idMenu,
+    status,
   }: CreateOrderDTO) {
     const order = await this.orderRepository.create({
       descricao,
@@ -17,6 +18,7 @@ export class CreateOrderUseCase {
       idCliente,
       idProducto,
       idMenu,
+      status,
     });
 
     return order;

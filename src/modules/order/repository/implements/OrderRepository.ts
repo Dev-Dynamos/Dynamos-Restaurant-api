@@ -14,12 +14,12 @@ export class OrderRepository implements IOrderRepository {
   }: CreateOrderDTO): Promise<Order> {
     const order = await prismaClient.pedido.create({
       data: {
+        status,
         descricao,
         localizacao,
         idCliente,
         idProducto,
         idMenu,
-        status,
       },
     });
     return order;
