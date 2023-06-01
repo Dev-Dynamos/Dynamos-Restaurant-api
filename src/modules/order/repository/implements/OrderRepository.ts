@@ -29,4 +29,13 @@ export class OrderRepository implements IOrderRepository {
     const Order = await prismaClient.pedido.findMany();
     return Order;
   }
+
+  async delete(id: string): Promise<Order> {
+    const order = await prismaClient.pedido.delete({
+      where: {
+        id,
+      },
+    });
+    return order;
+  }
 }

@@ -11,4 +11,5 @@ export interface IOrderRepository {
     status,
   }: CreateOrderDTO): Promise<Order>;
   get(): Promise<Order[]>;
+  delete: (id: string) => Promise<Order>;
 }
