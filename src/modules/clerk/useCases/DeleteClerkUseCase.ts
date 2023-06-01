@@ -1,11 +1,11 @@
 import { ClerkRepository } from "../repository/implements/ClerkRepository";
 
-export class GetClerskUseCase {
+export class DeleteClerkUseCase {
   constructor(private clerkRepository: ClerkRepository) {}
 
-  async execute() {
-    const clerks = await this.clerkRepository.get();
+  async execute(id: string) {
+    const clerk = this.clerkRepository.delete(id);
 
-    return clerks;
+    return clerk;
   }
 }

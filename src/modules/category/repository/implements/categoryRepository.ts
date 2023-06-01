@@ -19,11 +19,11 @@ export class CategoryRepository implements ICategoryRepository {
   }
 
   async delete(id: string): Promise<Category> {
-    const admin = await prismaClient.categoria.delete({
+    const category = await prismaClient.categoria.delete({
       where: {
         id,
       },
     });
-    return admin;
+    return category;
   }
 }

@@ -25,4 +25,13 @@ export class ClerkRepository implements IClerkRepository {
     const clerk = await prismaClient.operador.findMany();
     return clerk;
   }
+
+  async delete(id: string): Promise<Clerk> {
+    const clerk = await prismaClient.operador.delete({
+      where: {
+        id,
+      },
+    });
+    return clerk;
+  }
 }

@@ -1,4 +1,4 @@
-import { ClerkRepository } from "../repository/implements/clerkRepository";
+import { ClerkRepository } from "../repository/implements/ClerkRepository";
 import { GetClerskUseCase } from "../useCases/GetClerksUseCase";
 import { GetClerksController } from "./GetClerksController";
 
