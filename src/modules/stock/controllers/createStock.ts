@@ -1,9 +1,9 @@
-import { StockRepository } from "../repository/implement/AdminRepository";
+import { StockRepository } from "../repository/implement/StockRepository";
 import { CreateStockUseCase } from "../useCases/CreateStockUseCase";
 import { CreateStockController } from "./CreateStockController";
 
 const stockRepository = new StockRepository();
-const stockAdminUseCase = new CreateStockUseCase(stockRepository);
-const stockAdminController = new CreateStockController(stockAdminUseCase);
+const createStockUseCase = new CreateStockUseCase(stockRepository);
+const createStockController = new CreateStockController(createStockUseCase);
 
-export { stockAdminController };
+export { createStockController };
