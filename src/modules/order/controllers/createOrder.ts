@@ -2,8 +2,8 @@ import { OrderRepository } from "../repository/implements/OrderRepository";
 import { CreateOrderUseCase } from "../useCases/CreateOrderUseCase";
 import { CreateOrderController } from "./CreateOrderController";
 
-const clerkRepository = new OrderRepository();
-const createClerkUseCase = new CreateOrderUseCase(clerkRepository);
-const createClerkController = new CreateOrderController(createClerkUseCase);
+const orderRepository = new OrderRepository();
+const createOrderUseCase = new CreateOrderUseCase(orderRepository);
+const createOrderController = new CreateOrderController(createOrderUseCase);
 
-export { createClerkController };
+export { createOrderController };
