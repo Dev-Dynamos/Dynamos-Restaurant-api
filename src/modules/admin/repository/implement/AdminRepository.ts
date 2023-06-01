@@ -12,6 +12,12 @@ export class AdminRepository implements IAdminRepository {
         password,
       },
     });
+
+    return admin;
+  }
+
+  async get(): Promise<Admin[]> {
+    const admin = await prismaClient.admin.findMany();
     return admin;
   }
 }
