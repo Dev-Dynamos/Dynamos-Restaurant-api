@@ -1,5 +1,6 @@
 import { prismaClient } from "../../../../database/prismaClient";
 import { CreateProductDTO } from "../../ProductDTOs/CreateProductDTO";
+import { Product } from "../../model/Product";
 import { IProductRepository } from "../IProductRepository";
 
 export class ProductRepository implements IProductRepository {
@@ -11,6 +12,11 @@ export class ProductRepository implements IProductRepository {
         idCategoria,
       },
     });
+    return product;
+  }
+
+  async get(): Promise<Product[]> {
+    const product = await prismaClient.producto.findMany();
     return product;
   }
 }
