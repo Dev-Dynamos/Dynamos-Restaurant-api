@@ -1,4 +1,4 @@
-import { DeleteMenuUseCase } from "../useCases/DeleteCategoryUseCase";
+import { DeleteMenuUseCase } from "../useCases/DeleteMenuUseCase";
 import { Response, Request } from "express";
 
 export class DeleteMenuController {

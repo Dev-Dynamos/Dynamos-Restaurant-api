@@ -1,6 +1,6 @@
 import { MenuRepository } from "../repository/implements/MenuRepository";
-import { DeleteMenuUseCase } from "../useCases/DeleteCategoryUseCase";
-import { DeleteMenuController } from "./DeleteCategoryController";
+import { DeleteMenuUseCase } from "../useCases/DeleteMenuUseCase";
+import { DeleteMenuController } from "./DeleteMenuController";
 
 const categoryRepository = new MenuRepository();
 const deleteMenuUseCase = new DeleteMenuUseCase(categoryRepository);
