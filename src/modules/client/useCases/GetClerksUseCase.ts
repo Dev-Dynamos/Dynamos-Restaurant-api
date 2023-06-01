@@ -1,11 +1,10 @@
-import { ClerkRepository } from "../repository/implements/clerkRepository";
-
-export class GetClerskUseCase {
-  constructor(private clerkRepository: ClerkRepository) {}
+import { ClientRepository } from "../repository/implement/ClientRepository";
+export class GetClientUseCase {
+  constructor(private clientRepository: ClientRepository) {}
 
   async execute() {
-    const clerks = await this.clerkRepository.get();
+    const client = await this.clientRepository.get();
 
-    return clerks;
+    return client;
   }
 }

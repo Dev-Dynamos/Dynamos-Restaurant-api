@@ -8,4 +8,5 @@ export interface IClientRepository {
     password,
     telefone,
   }: CreateClientDTO) => Promise<Client>;
+  get(): Promise<Client[]>;
 }
