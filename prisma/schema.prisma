@@ -79,7 +79,7 @@ model pedido{
 
 model cliente{
   id String @id @default(uuid())
-  name String 
+  nome String 
   email String
   telefone String 
   password String 
