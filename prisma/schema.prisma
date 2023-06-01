@@ -21,7 +21,6 @@ model operador{
   name String 
   email String
   telefone String 
-  morada String
   cargoId String 
 
   @@map("operadores")

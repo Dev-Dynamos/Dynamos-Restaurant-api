@@ -4,12 +4,12 @@ import { IClerkRepository } from "../repository/IClerkRepository";
 export class CreateClerkUseCase {
   constructor(private clerkRepository: IClerkRepository) {}
 
-  async execute({ name, email, telefone, cargiId }: CreateClerkDTO) {
+  async execute({ name, email, telefone, cargoId }: CreateClerkDTO) {
     const clerk = await this.clerkRepository.create({
       name,
       email,
       telefone,
-      cargiId,
+      cargoId,
     });
 
     return clerk;

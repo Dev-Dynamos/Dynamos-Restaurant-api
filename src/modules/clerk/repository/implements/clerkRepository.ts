@@ -8,21 +8,21 @@ export class ClerkRepository implements IClerkRepository {
     name,
     email,
     telefone,
-    cargiId,
+    cargoId,
   }: CreateClerkDTO): Promise<Clerk> {
-    const clerk = await prismaClient.funcionario.create({
+    const clerk = await prismaClient.operador.create({
       data: {
         name,
         email,
         telefone,
-        cargiId,
+        cargoId,
       },
     });
     return clerk;
   }
 
   async get(): Promise<Clerk[]> {
-    const clerk = await prismaClient.funcionario.findMany();
+    const clerk = await prismaClient.operador.findMany();
     return clerk;
   }
 }
