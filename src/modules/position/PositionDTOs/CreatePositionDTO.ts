@@ -1,3 +1,3 @@
 export interface CreatePositionDTO {
-  designacao: string;
+  nome: string;
 }

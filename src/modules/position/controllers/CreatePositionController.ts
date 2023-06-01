@@ -5,10 +5,10 @@ export class CreatePositionController {
   constructor(private createPositionUseCase: CreatePositionUseCase) {}
 
   async handle(Req: Request, Res: Response): Promise<Response> {
-    const { designacao } = Req.body;
+    const { nome } = Req.body;
 
     const position = await this.createPositionUseCase.execute({
-      designacao,
+      nome,
     });
 
     return Res.status(201).json(position);

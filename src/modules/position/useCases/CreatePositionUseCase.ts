@@ -5,8 +5,8 @@ import { prismaClient } from "../../../database/prismaClient";
 export class CreatePositionUseCase {
   constructor(private positionRepository: IPositionRepository) {}
 
-  async execute({ designacao }: CreatePositionDTO) {
-    const position = await this.positionRepository.create({ designacao });
+  async execute({ nome }: CreatePositionDTO) {
+    const position = await this.positionRepository.create({ nome });
 
     return position;
   }
