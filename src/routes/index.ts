@@ -5,6 +5,7 @@ import { positionRoutes } from "./position.routes";
 import { categoryRoutes } from "./category.routes";
 import { productRoutes } from "./product.routes";
 import { stockRoutes } from "./stock.routes";
+import { clientRoutes } from "./client.routes";
 
 const router = Router();
 
@@ -14,5 +15,6 @@ router.use("/position", positionRoutes);
 router.use("/category", categoryRoutes);
 router.use("/product", productRoutes);
 router.use("/stock", stockRoutes);
+router.use("/client", clientRoutes);
 
 export { router };
