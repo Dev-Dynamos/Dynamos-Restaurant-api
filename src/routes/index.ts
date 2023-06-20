@@ -7,6 +7,7 @@ import { stockRoutes } from "./stock.routes";
 import { clientRoutes } from "./client.routes";
 import { menuRoutes } from "./menu.routes";
 import { orderRoutes } from "./order.routes";
+import { positionRoutes } from "./position.routes";
 
 const router = Router();
 
@@ -14,6 +15,7 @@ router.use("/admin", adminRoutes);
 router.use("/clerk", clerkRoutes);
 router.use("/category", categoryRoutes);
 router.use("/product", productRoutes);
+router.use("/position", positionRoutes);
 router.use("/stock", stockRoutes);
 router.use("/client", clientRoutes);
 router.use("/menu", menuRoutes);
