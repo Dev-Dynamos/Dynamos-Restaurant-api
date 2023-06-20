@@ -1,5 +1,5 @@
 import { prismaClient } from "../../../../database/prismaClient";
-import { CreateAdminDTO } from "../../adminDTOs/CreateAdminDTO";
+import { CreateAdminDTO, UpdateAdminDTO } from "../../adminDTOs/CreateAdminDTO";
 import { Admin } from "../../model/Admin";
 import { IAdminRepository } from "../IAdminRepository";
 
@@ -27,6 +27,21 @@ export class AdminRepository implements IAdminRepository {
         id,
       },
     });
+    return admin;
+  }
+
+  async update({ email, name, password, id }: UpdateAdminDTO): Promise<Admin> {
+    const admin = await prismaClient.admin.update({
+      data: {
+        email,
+        name,
+        password,
+      },
+      where: {
+        id: id,
+      },
+    });
+
     return admin;
   }
 }
