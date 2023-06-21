@@ -7,7 +7,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model admin{
+model Admin{
   id String @id @default(uuid())
   name String 
   email String
@@ -16,55 +16,63 @@ model admin{
   @@map("admins")
 }
 
-model operador{
+model Operador{
   id String @id @default(uuid())
   name String 
   email String
   telefone String 
-  cargoId String 
+  cargo    Cargo    @relation(fields: [cargoId], references: [id])
+  cargoId  String 
 
   @@map("operadores")
 }
-model cargo{
+model Cargo{
   id String @id @default(uuid())
   nome String
+  operadores Operador[]
 
   @@map("cargos")
 }
 
-model stock{
+model Stock{
   id String @id @default(uuid())
-  idProducto String
   quantidade Float
+  produto    Producto  @relation(fields: [produtoId], references: [id])
+  produtoId  String
 
   @@map("stocks")
 }
 
-model categoria{
+model Categoria{
   id String @id @default(uuid())
   nome String
+  procdutos Producto[]
 
   @@map("categorias")
 }
  
-model producto{
+model Producto{
   id String @id @default(uuid())
   nome String
   preco Float
-  idCategoria String
+  categoria Categoria @relation(fields: [categoriaId], references: [id])
+  categoriaId String
+  stocks Stock[]
+  menu     Menu      @relation(fields: [menuId], references: [id])
+  menuId   String
 
   @@map("productos")
 }
 
-model menu{
+model Menu{
   id String @id @default(uuid())
   nome String
-  idProducto String
+  produtos Producto[]
 
   @@map("menus")
 }
 
-model pedido{
+model Pedido{
   id String @id @default(uuid())
   status String
   descricao String
@@ -76,7 +84,7 @@ model pedido{
   @@map("pedidos")
 }
 
-model cliente{
+model Cliente{
   id String @id @default(uuid())
   nome String 
   email String
