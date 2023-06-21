@@ -1,5 +1,8 @@
 import { prismaClient } from "../../../../database/prismaClient";
-import { CreateCategoryDTO as CreateCategoryDTO } from "../../CategoryDTOs/CreateCategoryDTO";
+import {
+  CreateCategoryDTO as CreateCategoryDTO,
+  UpdateCategoryDTO,
+} from "../../CategoryDTOs/CreateCategoryDTO";
 import { Category } from "../../model/Category";
 import { ICategoryRepository as ICategoryRepository } from "../ICategoryRepository";
 
@@ -24,6 +27,19 @@ export class CategoryRepository implements ICategoryRepository {
         id,
       },
     });
+    return category;
+  }
+
+  async update({ id, nome }: UpdateCategoryDTO) {
+    const category = await prismaClient.categoria.update({
+      data: {
+        nome,
+      },
+      where: {
+        id: id,
+      },
+    });
+
     return category;
   }
 }
