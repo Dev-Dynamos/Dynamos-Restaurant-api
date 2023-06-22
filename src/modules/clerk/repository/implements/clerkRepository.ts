@@ -1,5 +1,5 @@
 import { prismaClient } from "../../../../database/prismaClient";
-import { CreateClerkDTO } from "../../ClerkDTOs/CreateClerkDTO";
+import { CreateClerkDTO, UpdateClerkDTO } from "../../ClerkDTOs/CreateClerkDTO";
 import { Clerk } from "../../model/Clerk";
 import { IClerkRepository } from "../IClerkRepository";
 
@@ -32,6 +32,28 @@ export class ClerkRepository implements IClerkRepository {
         id,
       },
     });
+    return clerk;
+  }
+
+  async update({
+    id,
+    name,
+    email,
+    telefone,
+    cargoId,
+  }: UpdateClerkDTO): Promise<Clerk> {
+    const clerk = await prismaClient.operador.update({
+      data: {
+        name,
+        email,
+        telefone,
+        cargoId,
+      },
+      where: {
+        id: id,
+      },
+    });
+
     return clerk;
   }
 }
