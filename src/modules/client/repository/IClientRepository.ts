@@ -1,4 +1,7 @@
-import { CreateClientDTO } from "../clientDTOs/CreateClientDTO";
+import {
+  CreateClientDTO,
+  UpdateClientDTO,
+} from "../clientDTOs/CreateClientDTO";
 import { Client } from "../model/Client";
 
 export interface IClientRepository {
@@ -10,4 +13,11 @@ export interface IClientRepository {
   }: CreateClientDTO) => Promise<Client>;
   get(): Promise<Client[]>;
   delete: (id: string) => Promise<Client>;
+  update({
+    id,
+    nome,
+    email,
+    telefone,
+    password,
+  }: UpdateClientDTO): Promise<Client>;
 }
