@@ -1,4 +1,4 @@
 export interface CreateStockDTO {
-  idProducto: string;
+  productoId: string;
   quantidade: number;
 }

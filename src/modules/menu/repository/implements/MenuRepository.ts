@@ -4,11 +4,10 @@ import { Menu } from "../../model/Menu";
 import { IMenuRepository } from "../IMenuRepository";
 
 export class MenuRepository implements IMenuRepository {
-  async create({ nome, idProducto }: CreateMenuDTO): Promise<Menu> {
+  async create({ nome }: CreateMenuDTO): Promise<Menu> {
     const menu = await prismaClient.menu.create({
       data: {
         nome,
-        idProducto,
       },
     });
     return menu;
