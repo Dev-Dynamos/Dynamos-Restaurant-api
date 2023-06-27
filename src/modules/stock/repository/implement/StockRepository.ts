@@ -4,10 +4,10 @@ import { CreateStockDTO } from "../../stockDTOs/CreateStockDTO";
 import { IStockRepository } from "../IStockRepository";
 
 export class StockRepository implements IStockRepository {
-  async create({ idProducto, quantidade }: CreateStockDTO) {
+  async create({ productoId, quantidade }: CreateStockDTO) {
     const stock = prismaClient.stock.create({
       data: {
-        idProducto,
+        productoId,
         quantidade,
       },
     });

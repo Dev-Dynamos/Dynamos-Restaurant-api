@@ -21,8 +21,8 @@ model Operador{
   name String 
   email String
   telefone String 
-  cargo    Cargo    @relation(fields: [cargoId], references: [id])
   cargoId  String 
+  cargo    Cargo    @relation(fields: [cargoId], references: [id])
 
   @@map("operadores")
 }
@@ -37,8 +37,8 @@ model Cargo{
 model Stock{
   id String @id @default(uuid())
   quantidade Float
-  produto    Producto  @relation(fields: [produtoId], references: [id])
-  produtoId  String
+  produto    Producto  @relation(fields: [productoId], references: [id])
+  productoId  String  @unique
 
   @@map("stocks")
 }
@@ -58,8 +58,8 @@ model Producto{
   categoria Categoria @relation(fields: [categoriaId], references: [id])
   categoriaId String
   stocks Stock[]
-  menu     Menu      @relation(fields: [menuId], references: [id])
-  menuId   String
+  menuProducto MenuProducto[]
+  pedido Pedido[]
 
   @@map("productos")
 }
@@ -67,19 +67,31 @@ model Producto{
 model Menu{
   id String @id @default(uuid())
   nome String
-  produtos Producto[]
+  menuProducto MenuProducto[]
+  pedido Pedido[]
 
   @@map("menus")
+}
+
+model MenuProducto{
+  id String @id @default(uuid())
+  menuId String
+  menu Menu @relation(fields: [menuId], references: [id])
+  productoId String
+  produto Producto @relation(fields: [productoId], references:[id])
 }
 
 model Pedido{
   id String @id @default(uuid())
   status String
   descricao String
-  localizacao String
-  idCliente String
-  idProducto String
-  idMenu String
+  localizacao String 
+  clienteId  String 
+  cliente Cliente @relation(fields: [clienteId], references: [id])
+  productoId String
+  produto Producto @relation(fields: [productoId], references:[id])
+  menuId String
+  menu    Menu  @relation(fields: [menuId], references: [id])
 
   @@map("pedidos")
 }
@@ -90,4 +102,6 @@ model Cliente{
   email String
   telefone String 
   password String 
+  pedido Pedido[]
 }
+
