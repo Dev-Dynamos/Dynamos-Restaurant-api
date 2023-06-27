@@ -1,5 +1,8 @@
 import { prismaClient } from "../../../../database/prismaClient";
-import { CreatePositionDTO } from "../../PositionDTOs/CreatePositionDTO";
+import {
+  CreatePositionDTO,
+  UpdatePositionDTO,
+} from "../../PositionDTOs/CreatePositionDTO";
 import { Position } from "../../model/Position";
 import { IPositionRepository } from "../IPositionRepository";
 
@@ -24,6 +27,19 @@ export class PositionRepository implements IPositionRepository {
         id,
       },
     });
+    return position;
+  }
+
+  async update({ id, nome }: UpdatePositionDTO): Promise<Position> {
+    const position = await prismaClient.cargo.update({
+      data: {
+        nome,
+      },
+      where: {
+        id: id,
+      },
+    });
+
     return position;
   }
 }
