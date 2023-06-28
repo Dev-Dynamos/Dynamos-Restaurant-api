@@ -1,10 +1,10 @@
 import crypto from "crypto";
 
 export class File {
-    private readonly id: string;
-    private readonly nome: string;
-    private readonly extensao: string;
-    private readonly caminho: string;
+    readonly id: string;
+    readonly nome: string;
+    readonly extensao: string;
+    readonly caminho: string;
 
     constructor(name: string, extension: string, path: string) {
         this.id = crypto.randomUUID();
