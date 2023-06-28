@@ -8,6 +8,7 @@ import { clientRoutes } from "./client.routes";
 import { menuRoutes } from "./menu.routes";
 import { orderRoutes } from "./order.routes";
 import { positionRoutes } from "./position.routes";
+import { fileRoutes } from "./file.routes";
 
 const router = Router();
 
@@ -20,5 +21,6 @@ router.use("/stock", stockRoutes);
 router.use("/client", clientRoutes);
 router.use("/menu", menuRoutes);
 router.use("/order", orderRoutes);
+router.use("/file", fileRoutes);
 
 export { router };
