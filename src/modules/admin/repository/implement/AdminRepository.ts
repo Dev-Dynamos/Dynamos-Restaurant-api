@@ -54,4 +54,14 @@ export class AdminRepository implements IAdminRepository {
 
     return admin;
   }
+
+  async findByEmail(email: string): Promise<Admin | null> {
+    const admin = await prismaClient.admin.findUnique({
+      where: {
+        email
+      }
+    });
+
+    return admin;
+  }
 }
