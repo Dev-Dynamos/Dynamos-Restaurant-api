@@ -9,6 +9,7 @@ import { menuRoutes } from "./menu.routes";
 import { orderRoutes } from "./order.routes";
 import { positionRoutes } from "./position.routes";
 import { fileRoutes } from "./file.routes";
+import { authenticationRoutes } from "./authenticate.routes";
 
 const router = Router();
 
@@ -22,5 +23,6 @@ router.use("/client", clientRoutes);
 router.use("/menu", menuRoutes);
 router.use("/order", orderRoutes);
 router.use("/file", fileRoutes);
+router.use("/auth", authenticationRoutes)
 
 export { router };
