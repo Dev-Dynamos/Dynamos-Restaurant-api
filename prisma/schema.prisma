@@ -7,59 +7,60 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Admin{
-  id String @id @default(uuid())
-  name String 
-  email String
+model Admin {
+  id       String @id @default(uuid())
+  name     String
+  email    String
   password String
 
   @@map("admins")
 }
 
-model Operador{
-  id String @id @default(uuid())
-  name String 
-  email String
-  telefone String 
-  cargoId  String 
-  cargo    Cargo    @relation(fields: [cargoId], references: [id])
+model Operador {
+  id       String @id @default(uuid())
+  name     String
+  email    String
+  telefone String
+  cargoId  String
+  cargo    Cargo  @relation(fields: [cargoId], references: [id])
 
   @@map("operadores")
 }
-model Cargo{
-  id String @id @default(uuid())
-  nome String
+
+model Cargo {
+  id         String     @id @default(uuid())
+  nome       String
   operadores Operador[]
 
   @@map("cargos")
 }
 
-model Stock{
-  id String @id @default(uuid())
+model Stock {
+  id         String   @id @default(uuid())
   quantidade Float
-  produto    Producto  @relation(fields: [productoId], references: [id])
-  productoId  String  @unique
+  produto    Producto @relation(fields: [productoId], references: [id])
+  productoId String   @unique
 
   @@map("stocks")
 }
 
-model Categoria{
-  id String @id @default(uuid())
-  nome String
+model Categoria {
+  id        String     @id @default(uuid())
+  nome      String
   procdutos Producto[]
 
   @@map("categorias")
 }
- 
-model Producto{
-  id String @id @default(uuid())
-  nome String
-  preco Float
-  categoria Categoria @relation(fields: [categoriaId], references: [id])
-  categoriaId String
-  stocks Stock[]
+
+model Producto {
+  id           String         @id @default(uuid())
+  nome         String
+  preco        Float
+  categoria    Categoria      @relation(fields: [categoriaId], references: [id])
+  categoriaId  String
+  stocks       Stock[]
   menuProducto MenuProducto[]
-  pedido Pedido[]
+  pedido       Pedido[]
 
   @@map("productos")
 }
@@ -69,40 +70,48 @@ model Menu{
   nome String
   preco Float
   menuProducto MenuProducto[]
-  pedido Pedido[]
+  pedido       Pedido[]
 
   @@map("menus")
 }
 
-model MenuProducto{
-  id String @id @default(uuid())
-  menuId String
-  menu Menu @relation(fields: [menuId], references: [id])
+model MenuProducto {
+  id         String   @id @default(uuid())
+  menuId     String
+  menu       Menu     @relation(fields: [menuId], references: [id])
   productoId String
-  produto Producto @relation(fields: [productoId], references:[id])
+  produto    Producto @relation(fields: [productoId], references: [id])
 }
 
-model Pedido{
-  id String @id @default(uuid())
-  status String
-  descricao String
-  localizacao String 
-  clienteId  String 
-  cliente Cliente @relation(fields: [clienteId], references: [id])
-  productoId String
-  produto Producto @relation(fields: [productoId], references:[id])
-  menuId String
-  menu    Menu  @relation(fields: [menuId], references: [id])
+model Pedido {
+  id          String   @id @default(uuid())
+  status      String
+  descricao   String
+  localizacao String
+  clienteId   String
+  cliente     Cliente  @relation(fields: [clienteId], references: [id])
+  productoId  String
+  produto     Producto @relation(fields: [productoId], references: [id])
+  menuId      String
+  menu        Menu     @relation(fields: [menuId], references: [id])
 
   @@map("pedidos")
 }
 
-model Cliente{
-  id String @id @default(uuid())
-  nome String 
-  email String
-  telefone String 
-  password String 
-  pedido Pedido[]
+model Cliente {
+  id       String   @id @default(uuid())
+  nome     String
+  email    String
+  telefone String
+  password String
+  pedido   Pedido[]
 }
 
+model Ficheiro {
+  id       String @id @default(uuid())
+  nome     String
+  extensao String
+  caminho  String
+
+  @@map("ficheiros")
+}
