@@ -6,4 +6,5 @@ export interface IAdminRepository {
   get: () => Promise<Admin[]>;
   delete: (id: string) => Promise<Admin>;
   update: ({ email, name, password, id }: UpdateAdminDTO) => Promise<Admin>;
+  findById: (id: string) => Promise<Admin | null>;
 }
