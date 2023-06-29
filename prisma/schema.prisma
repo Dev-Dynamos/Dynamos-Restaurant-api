@@ -65,9 +65,10 @@ model Producto {
   @@map("productos")
 }
 
-model Menu {
-  id           String         @id @default(uuid())
-  nome         String
+model Menu{
+  id String @id @default(uuid())
+  nome String
+  preco Float
   menuProducto MenuProducto[]
   pedido       Pedido[]
 

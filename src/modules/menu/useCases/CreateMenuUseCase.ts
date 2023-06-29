@@ -4,10 +4,10 @@ import { IMenuRepository } from "../repository/IMenuRepository";
 export class CreateMenuUseCase {
   constructor(private menuRepository: IMenuRepository) {}
 
-  async execute({ nome, idProducto }: CreateMenuDTO) {
+  async execute({ nome, preco }: CreateMenuDTO) {
     const menu = await this.menuRepository.create({
       nome,
-      idProducto,
+      preco,
     });
 
     return menu;

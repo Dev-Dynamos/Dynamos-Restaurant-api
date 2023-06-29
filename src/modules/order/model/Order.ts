@@ -4,25 +4,25 @@ export class Order {
   readonly id: string;
   readonly descricao: string;
   readonly localizacao: string;
-  readonly idCliente: string;
-  readonly idProducto: string;
-  readonly idMenu: string;
+  readonly clienteId: string;
+  readonly productoId: string;
+  readonly menuId: string;
   readonly status: string;
 
   constructor(
+    status: string,
     descricao: string,
     localizacao: string,
-    idCliente: string,
-    idProducto: string,
-    idMenu: string,
-    status: string
+    clienteId: string,
+    productoId: string,
+    menuId: string
   ) {
     this.id = crypto.randomUUID();
+    this.status = status;
     this.descricao = descricao;
     this.localizacao = localizacao;
-    this.idCliente = idCliente;
-    this.idProducto = idProducto;
-    this.idMenu = idMenu;
-    this.status = status;
+    this.clienteId = clienteId;
+    this.productoId = productoId;
+    this.menuId = menuId;
   }
 }
