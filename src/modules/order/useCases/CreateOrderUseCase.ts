@@ -5,19 +5,19 @@ export class CreateOrderUseCase {
   constructor(private orderRepository: IOrderRepository) {}
 
   async execute({
+    status,
     descricao,
     localizacao,
-    idCliente,
-    idProducto,
-    idMenu,
-    status,
+    clienteId,
+    productoId,
+    menuId,
   }: CreateOrderDTO) {
     const order = await this.orderRepository.create({
       descricao,
       localizacao,
-      idCliente,
-      idProducto,
-      idMenu,
+      clienteId,
+      productoId,
+      menuId,
       status,
     });
 

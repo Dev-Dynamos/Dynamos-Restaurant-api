@@ -7,9 +7,9 @@ export class OrderRepository implements IOrderRepository {
   async create({
     descricao,
     localizacao,
-    idCliente,
-    idProducto,
-    idMenu,
+    clienteId,
+    productoId,
+    menuId,
     status,
   }: CreateOrderDTO): Promise<Order> {
     const order = await prismaClient.pedido.create({
@@ -17,9 +17,9 @@ export class OrderRepository implements IOrderRepository {
         status,
         descricao,
         localizacao,
-        idCliente,
-        idProducto,
-        idMenu,
+        clienteId,
+        productoId,
+        menuId,
       },
     });
     return order;

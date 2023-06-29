@@ -5,16 +5,16 @@ export class CreateOrderController {
   constructor(private createOrderUseCase: CreateOrderUseCase) {}
 
   async handle(req: Request, res: Response): Promise<Response> {
-    const { descricao, localizacao, idCliente, idProducto, idMenu, status } =
+    const { descricao, localizacao, clienteId, productoId, menuId, status } =
       req.body;
 
     const order = await this.createOrderUseCase.execute({
+      status,
       descricao,
       localizacao,
-      idCliente,
-      idProducto,
-      idMenu,
-      status,
+      clienteId,
+      productoId,
+      menuId,
     });
 
     return res.status(201).json(order);
