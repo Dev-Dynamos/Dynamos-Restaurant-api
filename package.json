@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engines": {
+    "node": "18"
+  },
   "scripts": {
     "start": "ts-node-dev --transpile-only --respawn --ignore-watch node-modules src/server.ts",
     "build": "tsup src",
