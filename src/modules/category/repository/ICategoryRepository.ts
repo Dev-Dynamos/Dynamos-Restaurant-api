@@ -9,4 +9,5 @@ export interface ICategoryRepository {
   get(): Promise<Category[]>;
   delete: (id: string) => Promise<Category>;
   update({ id, nome }: UpdateCategoryDTO): Promise<Category>;
+  findById(id: string): Promise<Category | null>;
 }
