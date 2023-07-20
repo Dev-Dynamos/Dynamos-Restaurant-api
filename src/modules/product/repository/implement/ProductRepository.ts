@@ -4,13 +4,14 @@ import { Product } from "../../model/Product";
 import { IProductRepository } from "../IProductRepository";
 
 export class ProductRepository implements IProductRepository {
-  async create({ nome , categoriaId, preco }: CreateProductDTO) {
+  async create ({ nome , categoriaId, preco, descricao, ficheiroId }: CreateProductDTO) {
     const product = prismaClient.producto.create({
       data: {
         nome,
         preco,
         categoriaId,
-        
+        descricao,
+        ficheiroId,
       },
     });
     return product;
@@ -28,5 +29,15 @@ export class ProductRepository implements IProductRepository {
       },
     });
     return product;
+  }
+
+  async findById (id: string): Promise<Product | null> {
+    const product = await prismaClient.producto.findUnique({
+      where: {
+        id
+      }
+    });
+
+    return product
   }
 }
