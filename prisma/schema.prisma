@@ -53,11 +53,16 @@ model Categoria {
 }
 
 model Producto {
-  id           String         @id @default(uuid())
-  nome         String
-  preco        Float
-  categoria    Categoria      @relation(fields: [categoriaId], references: [id])
-  categoriaId  String
+  id          String @id @default(uuid())
+  nome        String
+  preco       Float
+  descricao   String
+  ficheiroId  String @unique
+  categoriaId String
+
+  categoria Categoria @relation(fields: [categoriaId], references: [id])
+  ficheiro  Ficheiro  @relation(fields: [ficheiroId], references: [id], onDelete: Cascade)
+
   stocks       Stock[]
   menuProducto MenuProducto[]
   pedido       Pedido[]
@@ -65,10 +70,10 @@ model Producto {
   @@map("productos")
 }
 
-model Menu{
-  id String @id @default(uuid())
-  nome String
-  preco Float
+model Menu {
+  id           String         @id @default(uuid())
+  nome         String
+  preco        Float
   menuProducto MenuProducto[]
   pedido       Pedido[]
 
@@ -108,10 +113,11 @@ model Cliente {
 }
 
 model Ficheiro {
-  id       String @id @default(uuid())
+  id       String    @id @default(uuid())
   nome     String
   extensao String
   caminho  String
+  producto Producto?
 
   @@map("ficheiros")
 }
