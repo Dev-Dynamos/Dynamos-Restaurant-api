@@ -20,4 +20,5 @@ export interface IClientRepository {
     telefone,
     password,
   }: UpdateClientDTO): Promise<Client>;
+  findById: (id: string) => Promise<Client | null>;
 }

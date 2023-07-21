@@ -27,4 +27,14 @@ export class MenuRepository implements IMenuRepository {
     });
     return menu;
   }
+
+  async findById (id: string): Promise<Menu | null> {
+    const menu = await prismaClient.menu.findUnique({
+      where: {
+        id
+      }
+    });
+
+    return menu
+  };
 }

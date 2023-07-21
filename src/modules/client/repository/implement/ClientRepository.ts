@@ -54,4 +54,14 @@ export class ClientRepository implements IClientRepository {
 
     return client;
   }
+
+  async findById (id: string): Promise<Client | null> {
+    const client = await prismaClient.cliente.findUnique({
+      where: {
+        id
+      }
+    });
+
+    return client
+  };
 }
