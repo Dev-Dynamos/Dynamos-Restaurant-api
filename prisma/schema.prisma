@@ -89,16 +89,17 @@ model MenuProducto {
 }
 
 model Pedido {
-  id          String   @id @default(uuid())
+  id          String  @id @default(uuid())
   status      String
   descricao   String
   localizacao String
   clienteId   String
-  cliente     Cliente  @relation(fields: [clienteId], references: [id])
-  productoId  String
-  produto     Producto @relation(fields: [productoId], references: [id])
-  menuId      String
-  menu        Menu     @relation(fields: [menuId], references: [id])
+  productoId  String?
+  menuId      String?
+
+  cliente Cliente  @relation(fields: [clienteId], references: [id])
+  produto Producto? @relation(fields: [productoId], references: [id])
+  menu    Menu?     @relation(fields: [menuId], references: [id])
 
   @@map("pedidos")
 }
