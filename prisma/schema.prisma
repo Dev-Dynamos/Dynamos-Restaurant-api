@@ -7,6 +7,14 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum PedidoStatus {
+  pendente
+  aceite
+  entrege
+  cancelado
+  negado
+}
+
 model Admin {
   id       String @id @default(uuid())
   name     String
@@ -89,15 +97,15 @@ model MenuProducto {
 }
 
 model Pedido {
-  id          String  @id @default(uuid())
-  status      String
+  id          String       @id @default(uuid())
+  status      PedidoStatus
   descricao   String
   localizacao String
-  clienteId   String
+  clienteId   String?
   productoId  String?
   menuId      String?
 
-  cliente Cliente  @relation(fields: [clienteId], references: [id])
+  cliente Cliente?  @relation(fields: [clienteId], references: [id])
   produto Producto? @relation(fields: [productoId], references: [id])
   menu    Menu?     @relation(fields: [menuId], references: [id])
 
