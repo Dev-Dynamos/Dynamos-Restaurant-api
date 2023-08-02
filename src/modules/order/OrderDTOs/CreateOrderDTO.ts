@@ -1,5 +1,7 @@
+import { OrderStatus } from "./OrderStatus";
+
 export interface CreateOrderDTO {
-  status: string;
+  status: OrderStatus;
   descricao: string;
   localizacao: string;
   clienteId: string;
