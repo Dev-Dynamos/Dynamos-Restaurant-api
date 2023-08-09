@@ -20,6 +20,7 @@ export class ProductRepository implements IProductRepository {
   async get(): Promise<Product[]> {
     const product = await prismaClient.producto.findMany({
       include: {
+        categoria:true,
         ficheiro: {
           select: {
             id: true,

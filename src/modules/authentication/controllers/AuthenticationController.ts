@@ -7,9 +7,9 @@ export class AuthenticationController {
 
     async handle(req: Request, res: Response): Promise<Response> {
 
-        const { password, email } = req.body;
+        const { password, email, status } = req.body;
 
-        const user = await this.authenticationLoginUseCase.execute({ password, email });
+        const user = await this.authenticationLoginUseCase.execute({ password, email, status });
 
         return res.status(200).json(user);
     }

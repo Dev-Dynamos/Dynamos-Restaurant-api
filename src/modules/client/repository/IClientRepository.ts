@@ -1,8 +1,8 @@
+import { Cliente } from "@prisma/client";
 import {
   CreateClientDTO,
   UpdateClientDTO,
 } from "../clientDTOs/CreateClientDTO";
-import { Client } from "../model/Client";
 
 export interface IClientRepository {
   create: ({
@@ -10,15 +10,16 @@ export interface IClientRepository {
     email,
     password,
     telefone,
-  }: CreateClientDTO) => Promise<Client>;
-  get(): Promise<Client[]>;
-  delete: (id: string) => Promise<Client>;
+  }: CreateClientDTO) => Promise<Cliente>;
+  get(): Promise<Cliente[]>;
+  delete: (id: string) => Promise<Cliente | null>;
   update({
     id,
     nome,
     email,
     telefone,
     password,
-  }: UpdateClientDTO): Promise<Client>;
-  findById: (id: string) => Promise<Client | null>;
+  }: UpdateClientDTO): Promise<Cliente | null>;
+  findById: (id: string) => Promise<Cliente | null>;
+  findByEmail: (email: string) => Promise<Cliente | null>;
 }

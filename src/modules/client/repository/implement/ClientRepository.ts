@@ -1,14 +1,28 @@
+import { Cliente } from "@prisma/client";
 import { prismaClient } from "../../../../database/prismaClient";
 import {
   CreateClientDTO,
   UpdateClientDTO,
 } from "../../clientDTOs/CreateClientDTO";
-import { Client } from "../../model/Client";
 import { IClientRepository } from "../IClientRepository";
 
 export class ClientRepository implements IClientRepository {
-  async create({ nome, email, password, telefone }: CreateClientDTO) {
-    const client = prismaClient.cliente.create({
+  async findByEmail(email: string): Promise<Cliente | null> {
+    const client = await prismaClient.cliente.findFirst({
+      where: {
+        email: email,
+      },
+    });
+    return client;
+  }
+
+  async create({
+    nome,
+    email,
+    password,
+    telefone,
+  }: CreateClientDTO): Promise<Cliente> {
+    const client = await prismaClient.cliente.create({
       data: {
         nome,
         email,
@@ -19,18 +33,18 @@ export class ClientRepository implements IClientRepository {
     return client;
   }
 
-  async get(): Promise<Client[]> {
-    const client = await prismaClient.cliente.findMany();
-    return client;
+  async get(): Promise<Cliente[]> {
+    const clients = await prismaClient.cliente.findMany();
+    return clients;
   }
 
-  async delete(id: string): Promise<Client> {
-    const lient = await prismaClient.cliente.delete({
+  async delete(id: string): Promise<Cliente | null> {
+    const client = await prismaClient.cliente.delete({
       where: {
         id,
       },
     });
-    return lient;
+    return client;
   }
 
   async update({
@@ -39,29 +53,27 @@ export class ClientRepository implements IClientRepository {
     email,
     password,
     telefone,
-  }: UpdateClientDTO): Promise<Client> {
+  }: UpdateClientDTO): Promise<Cliente | null> {
     const client = await prismaClient.cliente.update({
       data: {
         nome,
         email,
-        password,
+        password, // Remember to hash the password before saving it
         telefone,
       },
       where: {
         id: id,
       },
     });
-
     return client;
   }
 
-  async findById (id: string): Promise<Client | null> {
+  async findById(id: string): Promise<Cliente | null> {
     const client = await prismaClient.cliente.findUnique({
       where: {
-        id
-      }
+        id,
+      },
     });
-
-    return client
-  };
+    return client;
+  }
 }

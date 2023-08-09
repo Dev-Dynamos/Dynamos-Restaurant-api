@@ -10,7 +10,7 @@ datasource db {
 enum PedidoStatus {
   pendente
   aceite
-  entrege
+  entregue
   cancelado
   negado
 }
@@ -98,7 +98,7 @@ model MenuProducto {
 
 model Pedido {
   id          String       @id @default(uuid())
-  status      PedidoStatus
+  status      PedidoStatus @default(pendente)
   descricao   String
   localizacao String
   clienteId   String?

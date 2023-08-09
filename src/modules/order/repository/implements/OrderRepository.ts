@@ -28,7 +28,18 @@ export class OrderRepository implements IOrderRepository {
   }
 
   async get(): Promise<Pedido[]> {
-    const Order = await prismaClient.pedido.findMany();
+    const Order = await prismaClient.pedido.findMany({
+      include:{
+        cliente: true,
+        produto: {
+          include:{
+            ficheiro: true,
+            categoria: true
+          }
+        },
+        menu: true
+      }
+    });
     return Order;
   }
 
